@@ -27,47 +27,6 @@ Jaccard similarity is commonly used in information retrieval, natural language p
 
 
 
-here's an example of prototype learning using Python and the scikit-learn library:
-
-from sklearn.datasets import load_iris
-from sklearn.cluster import KMeans
-
-# Load the iris dataset
-iris = load_iris()
-X = iris.data
-y = iris.target
-
-# Use k-means clustering to create prototypes
-kmeans = KMeans(n_clusters=3, random_state=0).fit(X)
-prototypes = kmeans.cluster_centers_
-
-# Use the prototypes to classify new data points
-new_data = [[5.0, 3.5, 1.5, 0.2], [6.1, 2.8, 4.7, 1.2], [7.2, 3.0, 5.8, 1.6]]
-for data_point in new_data:
-    # Calculate the distances between the data point and the prototypes
-    distances = [((data_point - prototype) ** 2).sum() for prototype in prototypes]
-    # Assign the data point to the class of the closest prototype
-    class_label = y[distances.index(min(distances))]
-    print("Data point: {}, Class: {}".format(data_point, iris.target_names[class_label]))
-
-
-
-
-In this example, we first load the iris dataset, which contains measurements of the sepal length, sepal width, petal length, and petal width of 150 iris flowers, each belonging to one of three species: setosa, versicolor, or virginica.
-
-Next, we use the k-means clustering algorithm to create prototypes, which are the centroids of three clusters. We then use the prototypes to classify three new data points, which are represented by the new_data list.
-
-For each new data point, we calculate the distances between the data point and the prototypes using the Euclidean distance metric. We then assign the data point to the class of the closest prototype, which is determined by the minimum distance.
-
-Finally, we print the class labels of the new data points, which are setosa, versicolor, and virginica, respectively.
-
-
-
-
-
-
-
-
 
 
 
